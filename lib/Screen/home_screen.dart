@@ -37,7 +37,7 @@ class AnimatedScreen extends StatelessWidget {
               children: [
                 AnimatedTextKit(
                     repeatForever: true,
-                    pause: Duration(seconds: 2),
+                    pause: Duration(seconds: 1),
                     animatedTexts: [
                       TypewriterAnimatedText("Bienvenue dans votre app",
                           textAlign: TextAlign.center,
@@ -45,7 +45,7 @@ class AnimatedScreen extends StatelessWidget {
                       ScaleAnimatedText("M2 météo",
                           textAlign: TextAlign.center,
                           textStyle: OrangeStyleHomeScreen()),
-                      FadeAnimatedText("Cliquez sur le button magique",
+                      ScaleAnimatedText("Cliquez sur le button magique",
                           textAlign: TextAlign.center,
                           textStyle: BlueStyleHomeScreen()),
                       ColorizeAnimatedText('Pour commencer l\'experience',
@@ -65,14 +65,15 @@ class AnimatedScreen extends StatelessWidget {
             right: 0,
             child: ElevatedButton(
               onPressed: () {
-                print("redirection vers la page de la meteo");
+                print('take me');
               },
-              child: AnimatedTextKit(repeatForever: true, animatedTexts: [
-                ColorizeAnimatedText('Cliquez moi',
-                    textAlign: TextAlign.center,
-                    textStyle: OrangeStyleHomeScreen(),
-                    colors: [Colors.blueAccent, Colors.orange])
-              ]),
+              child: Text(
+                'Cliquez moi ',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 34,
+                    color: Colors.indigo),
+              ),
             ),
           ),
         ],
