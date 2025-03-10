@@ -1,5 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:app_meteo/Screen/principal_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -66,6 +68,9 @@ class AnimatedScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 print('take me');
+                Get.off(PrincipalScreen(),
+                    transition: Transition.upToDown,
+                    duration: Duration(seconds: 1));
               },
               child: Text(
                 'Cliquez moi ',

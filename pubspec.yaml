@@ -37,6 +37,7 @@ dependencies:
   animated_text_kit: ^4.2.3
   flutter_animated_button: ^2.0.4
   google_fonts: ^6.2.1
+  get:
 
 dev_dependencies:
   flutter_test:
