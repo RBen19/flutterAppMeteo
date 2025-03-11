@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_spinkit: ^5.2.0
   http: ^1.0.0
+  retrofit: ^4.4.0
+  json_annotation: ^4.9.0
 
   get:
 
@@ -52,6 +54,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  retrofit_generator:
+  build_runner: ^2.3.3
+  json_serializable: ^6.8.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
