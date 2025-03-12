@@ -1,6 +1,9 @@
 import 'dart:async';
+
+import 'package:app_meteo/Screen/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -31,6 +34,8 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         });
       } else {
         timer.cancel();
+        print('fin du timer');
+        Get.off(Test());
       }
     });
   }
@@ -43,7 +48,8 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitWave(color: Colors.white, size: 50.0), // Animation de chargement
+            SpinKitWave(
+                color: Colors.white, size: 50.0), // Animation de chargement
             SizedBox(height: 20),
             LinearProgressIndicator(
               value: _progress,

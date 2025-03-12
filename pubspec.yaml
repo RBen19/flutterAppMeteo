@@ -41,6 +41,8 @@ dependencies:
   http: ^1.0.0
   retrofit: ^4.4.0
   json_annotation: ^4.9.0
+  dio:
+  logger: ^2.4.0
 
   get:
 
