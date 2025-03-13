@@ -36,7 +36,7 @@ class _TestWeatherState extends State<TestWeather> {
     apiService
         .getWeatherData(
       'b3129c6a07b14c10a03232711251203',
-      'London',
+      'Dakar',
     )
         .then((data) {
       setState(() {
