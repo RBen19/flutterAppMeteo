@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  ClipRRect animation_builder(String pathAnimation) {
+  static ClipRRect animation_builder(String pathAnimation) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(100.0),
       child: Lottie.asset(

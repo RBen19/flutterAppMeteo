@@ -1,9 +1,11 @@
 import 'dart:async';
 
-import 'package:app_meteo/Screen/test.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
+
+import '../models/weather.dart';
+import '../services/api_service.dart';
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -13,6 +15,8 @@ class PrincipalScreen extends StatefulWidget {
 class _PrincipalScreenState extends State<PrincipalScreen> {
   double _progress = 0.0;
   int _messageIndex = 0;
+  late ApiService apiService;
+  Weather? weather;
   final List<String> _messages = [
     "Nous téléchargeons les données…",
     "C’est presque fini…",
@@ -22,7 +26,33 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   @override
   void initState() {
     super.initState();
-    _startLoading();
+    final dio = Dio(BaseOptions(contentType: "application/json"));
+    apiService = ApiService(dio);
+
+    _getWeather();
+    // _startLoading();
+  }
+
+  Future<void> _getWeather() async {
+    apiService
+        .getWeatherData(
+      'b3129c6a07b14c10a03232711251203',
+      'Dakar',
+    )
+        .then((data) {
+      setState(() {
+        weather = data;
+        print(data.location.name);
+        print(data.current.feelslike_c);
+        _startLoading();
+        print("apres que le loader ait fait son taf");
+        print("${data.current.wind_mph}vitesse du vent");
+
+        if (_progress == 1.0) {}
+      });
+    }).catchError((e) {
+      print('Error: $e');
+    });
   }
 
   void _startLoading() {
@@ -35,7 +65,8 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
       } else {
         timer.cancel();
         print('fin du timer');
-        Get.off(Test());
+        //TODO : rediriger vers une page qui prendra le tableau weather en paramètre pour l'affichage des données
+        // Get.off(Test());
       }
     });
   }
