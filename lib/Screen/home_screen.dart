@@ -18,16 +18,20 @@ class HomeScreen extends StatelessWidget {
               color: Colors.deepOrangeAccent),
         ),
       ),
-      body: Column(children: [
-        animation_builder('assets/animations/animation2.json'),
-        SizedBox(
-          height: 100,
-        ),
-        Center(child: AnimatedScreen()),
-        SizedBox(
-          height: 80,
-        ),
-      ]),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(children: [
+          animation_builder('assets/animations/animation2.json'),
+          SizedBox(
+            height: 80,
+          ),
+          Center(child: AnimatedScreen()),
+          SizedBox(
+            height: 50,
+          ),
+          animation_builder('assets/animations/animation3.json')
+        ]),
+      ),
     );
   }
 
