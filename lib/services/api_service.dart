@@ -8,7 +8,7 @@ class Api {
   static const String currentdata = '/current.json';
 }
 
-@RestApi(baseUrl: 'http://api.weatherapi.com/v1')
+@RestApi(baseUrl:'http://api.weatherapi.com/v1')
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
   @GET("/current.json")

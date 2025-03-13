@@ -35,14 +35,14 @@ class _TestWeatherState extends State<TestWeather> {
   Future<void> _getWeather() async {
     apiService
         .getWeatherData(
-      'e5fc52084fe4473594b193359251103', // Remplace par ta clé API
+      'b3129c6a07b14c10a03232711251203',
       'London',
     )
         .then((data) {
       setState(() {
         weather = data;
         print(data.location.name);
-        print(data.feelslike_c);
+        print(data.current.feelslike_c);
       });
     }).catchError((e) {
       print('Error: $e');
@@ -60,8 +60,8 @@ class _TestWeatherState extends State<TestWeather> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Location: ${weather!.location.name}'),
-                  Text('Temperature: ${weather!.feelslike_c}°C'),
-                  Text('Humidity: ${weather!.humidity}%'),
+                  Text('Temperature: ${weather!.current.feelslike_c}°C'),
+                  Text('Humidity: ${weather!.current.humidity}%'),
                 ],
               ),
             ),
