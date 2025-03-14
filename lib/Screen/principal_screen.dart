@@ -1,11 +1,12 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:get/get.dart';
 import '../models/weather.dart';
 import '../services/api_service.dart';
+import 'CitiesScreen.dart';
+
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -30,7 +31,6 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     apiService = ApiService(dio);
 
     _getWeather();
-    // _startLoading();
   }
 
   Future<void> _getWeather() async {
@@ -45,10 +45,13 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         print(data.location.name);
         print(data.current.feelslike_c);
         _startLoading();
-        print("apres que le loader ait fait son taf");
-        print("${data.current.wind_mph}vitesse du vent");
+        print("après que le loader ait fait son taf");
+        print("${data.current.wind_mph} vitesse du vent");
 
-        if (_progress == 1.0) {}
+        if (_progress == 1.0) {
+
+          _redirectToCitiesScreen();
+        }
       });
     }).catchError((e) {
       print('Error: $e');
@@ -64,11 +67,17 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         });
       } else {
         timer.cancel();
-        print('fin du timer');
-        //TODO : rediriger vers une page qui prendra le tableau weather en paramètre pour l'affichage des données
-        // Get.off(Test());
+        print('Fin du timer');
+        // Redirection vers la page CitiesScreen
+        _redirectToCitiesScreen();
       }
     });
+  }
+
+
+  void _redirectToCitiesScreen() {
+
+    Get.off(() => CitiesScreen());
   }
 
   @override
@@ -79,8 +88,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitWave(
-                color: Colors.white, size: 50.0), // Animation de chargement
+            SpinKitWave(color: Colors.white, size: 50.0), // Animation de chargement
             SizedBox(height: 20),
             LinearProgressIndicator(
               value: _progress,
