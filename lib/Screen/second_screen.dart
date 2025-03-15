@@ -15,7 +15,7 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${listWeather[0].location.name}",
+          "Météo",
           style: TextStyle(color: Colors.deepOrangeAccent),
         ),
       ),

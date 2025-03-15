@@ -47,7 +47,7 @@ class CardVillesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "${temp_c}",
+                  "${temp_c} °C",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600,
