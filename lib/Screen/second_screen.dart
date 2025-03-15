@@ -1,5 +1,7 @@
+import 'package:app_meteo/Screen/loader_screen.dart';
 import 'package:app_meteo/models/weather.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SecondScreen extends StatelessWidget {
   final List<Weather> listWeather;
@@ -14,8 +16,26 @@ class SecondScreen extends StatelessWidget {
           style: TextStyle(color: Colors.deepOrangeAccent),
         ),
       ),
-      body: Column(
-        children: [],
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 150,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.off(PrincipalScreen());
+              },
+              child: Text(
+                'Recommencer',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 34,
+                    color: Colors.indigo),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

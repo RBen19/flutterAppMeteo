@@ -20,6 +20,7 @@ class PrincipalScreen extends StatefulWidget {
 
 class _PrincipalScreenState extends State<PrincipalScreen> {
   List<String> randomTown = [];
+  List<Weather> weatherListLoader = [];
   int cpt = 0;
   List<Future> weatherFutures = [];
   double _progress = 0.0;
@@ -56,7 +57,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         )
             .then((data) {
           setState(() {
-            Utils.weatherList.add(data);
+            weatherListLoader.add(data);
             cpt = cpt + 1; // Incrémente ton compteur
             print("La valeur du compteur est ${cpt}");
             print("La taille de la liste est ${Utils.weatherList.length}");
@@ -79,7 +80,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     print("nombre de promesses ${weatherFutures.length}");
     if (cpt == 5) {
       Get.to(() => SecondScreen(
-            listWeather: Utils.weatherList,
+            listWeather: weatherListLoader,
           ));
 
       // gotoPrincipalScreen();
