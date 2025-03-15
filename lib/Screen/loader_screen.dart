@@ -18,6 +18,7 @@ class PrincipalScreen extends StatefulWidget {
 }
 
 class _PrincipalScreenState extends State<PrincipalScreen> {
+  List<String> randomTown = [];
   double _progress = 0.0;
   int _messageIndex = 0;
   late ApiService apiService;
@@ -30,7 +31,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   ];
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     final dio = Dio(BaseOptions(contentType: "application/json"));
     apiService = ApiService(dio);
@@ -39,28 +40,36 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
   }
 
   Future<void> _getWeather() async {
-    apiService
-        .getWeatherData(
-      'b3129c6a07b14c10a03232711251203',
-      'Dakar',
-    )
-        .then((data) {
-      setState(() {
-        weather = data;
-        print(data.location.name);
-        print(data.current.feelslike_c);
-        _startLoading();
-        print("après que le loader ait fait son taf");
-        print("${data.current.wind_mph} vitesse du vent");
+    List<String> capitals = List.from(Utils.capitals);
+    capitals.shuffle();
+    randomTown = capitals.take(5).toList();
+    for (String town in randomTown) {
+      apiService
+          .getWeatherData(
+        'b3129c6a07b14c10a03232711251203',
+        '${town}',
+      )
+          .then((data) {
+        setState(() {
+          Utils.weatherList.add(data);
+          print("la taille de la liste est  ${Utils.weatherList.length}");
+          weather = data;
+          print(data.location.name);
+          print(data.current.feelslike_c);
+          print(data.current.temp_c);
+          _startLoading();
+          print("après que le loader ait fait son taf");
+          print("${data.current.wind_mph} vitesse du vent");
 
-        if (_progress == 1.0) {
-          //  _redirectToCitiesScreen();
-        }
+          if (_progress == 1.0) {
+            //  _redirectToCitiesScreen();
+          }
+        });
+      }).catchError((e) {
+        print('Error: $e');
+        Get.off(() => ErrorScreen());
       });
-    }).catchError((e) {
-      print('Error: $e');
-      Get.off(() => ErrorScreen());
-    });
+    }
   }
 
   void _startLoading() {

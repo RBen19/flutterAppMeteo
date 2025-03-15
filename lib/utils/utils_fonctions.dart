@@ -1,3 +1,4 @@
+import 'package:app_meteo/models/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -31,4 +32,58 @@ class Utils {
     return TextStyle(
         fontSize: 34, fontWeight: FontWeight.bold, color: Colors.orangeAccent);
   }
+
+  static List<String> capitals = [
+    "Addis-Abeba",
+    "Alger",
+    "Amman",
+    "Ankara",
+    "Asmara",
+    "Athènes",
+    "Bagdad",
+    "Bakou",
+    "Bamako",
+    "Bandar Seri Begawan",
+    "Bangkok",
+    "Banjul",
+    "Basseterre",
+    "Beijing",
+    "Belgrade",
+    "Bogotá",
+    "Brasília",
+    "Bucarest",
+    "Budapest",
+    "Buenos Aires",
+    "Cairo",
+    "Canberra",
+    "Caracas",
+    "Copenhague",
+    "Dakar",
+    "Damas",
+    "Dhaka",
+    "Dili",
+    "Doha",
+    "Dublin",
+    "Édimbourg",
+    "Helsinki",
+    "Islamabad",
+    "Jakarta",
+    "Jérusalem",
+    "Kampala",
+    "Katmandou",
+    "Kinshasa",
+    "La Havane",
+    "Lisbonne",
+    "Ljubljana",
+    "Lima",
+    "Londres",
+    "Madrid",
+    "Maputo",
+    "Mexico",
+    "Moscou",
+    "Nairobi",
+    "New Delhi",
+    "Oslo"
+  ];
+  static List<Weather> weatherList = [];
 }
