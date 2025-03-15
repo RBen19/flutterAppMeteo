@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:app_meteo/Screen/principal_screen.dart';
+import 'package:app_meteo/Screen/loader_screen.dart';
 import 'package:app_meteo/utils/utils_fonctions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,6 +39,9 @@ class ErrorScreen extends StatelessWidget {
                   ),
                   AnimatedTextKit(repeatForever: true, animatedTexts: [
                     RotateAnimatedText("Une erreur est survenue !",
+                        textAlign: TextAlign.center,
+                        textStyle: OrangeStyleHomeScreen()),
+                    RotateAnimatedText("l'API fait des siennes !",
                         textAlign: TextAlign.center,
                         textStyle: OrangeStyleHomeScreen())
                   ]),

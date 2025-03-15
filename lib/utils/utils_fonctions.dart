@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class Utils {
@@ -13,5 +13,22 @@ class Utils {
         width: width,
       ),
     );
+  }
+
+  static TextStyle PersonnalStyleSizeWeightColors(
+      double fontSize, FontWeight fontWeight, Color color) {
+    return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
+  }
+
+  static TextStyle BlueStyleHomeScreen() {
+    return TextStyle(
+        fontSize: 34,
+        fontWeight: FontWeight.bold,
+        color: Colors.lightBlueAccent);
+  }
+
+  TextStyle OrangeStyleHomeScreen() {
+    return TextStyle(
+        fontSize: 34, fontWeight: FontWeight.bold, color: Colors.orangeAccent);
   }
 }

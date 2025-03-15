@@ -2,7 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Screen/principal_screen.dart';
+import '../Screen/loader_screen.dart';
 
 class AnimatedScreen extends StatelessWidget {
   const AnimatedScreen({super.key});
