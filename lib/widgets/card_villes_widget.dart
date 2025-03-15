@@ -63,7 +63,7 @@ class CardVillesWidget extends StatelessWidget {
                     ),
                     SizedBox(width: 6),
                     Text(
-                      '${wind}',
+                      '${wind} km/h',
                       style: TextStyle(
                         fontSize: 26,
                         color: Colors.blueGrey[600],

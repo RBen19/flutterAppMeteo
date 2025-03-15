@@ -11,6 +11,7 @@ class SecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Weather weather;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -23,7 +24,7 @@ class SecondScreen extends StatelessWidget {
           children: [
             Utils.animation_builder("assets/animations/world.json", 200, 200),
             SizedBox(
-              height: 30,
+              height: 5,
             ),
             ElevatedButton(
               onPressed: () {
@@ -38,66 +39,21 @@ class SecondScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 35,
+              height: 25,
             ),
-            /*
-            Container(
-              height: 180,
-              width: 420,
-              decoration: BoxDecoration(
-                  color: Colors.lightBlueAccent,
-                  borderRadius: BorderRadius.circular(20)),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text("${listWeather[0].current.temp_c}",
-                              style:
-                                  TextStyle(fontSize: 60, color: Colors.white)),
-                          Text(
-                            "degrés",
-                            style: TextStyle(
-                                color: Colors.deepOrange, fontSize: 20),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "${listWeather[0].location.name}",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  /*
-                     Column(
-                    children: [Text("Temperature")],
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: [Text("Vitesse du vent")],
-                  )
-                 * */
-                ],
-              ),
-            )
-           *
-           * */
-            CardVillesWidget()
+            ListView.builder(
+              itemCount: listWeather.length,
+              itemBuilder: (context, index) {
+                weather = listWeather[index];
+                return CardVillesWidget(
+                  nameTown: weather.location.name,
+                  country: weather.location.country,
+                  temp_c: weather.current.temp_c,
+                  wind: weather.current.wind_mph,
+                );
+              },
+              shrinkWrap: true,
+            ),
           ],
         ),
       ),
