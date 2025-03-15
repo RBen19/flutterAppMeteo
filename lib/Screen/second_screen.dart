@@ -14,6 +14,11 @@ class SecondScreen extends StatelessWidget {
     Weather weather;
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Get.off(PrincipalScreen());
+            },
+            icon: Icon(Icons.arrow_back)),
         title: Text(
           "Météo",
           style: TextStyle(color: Colors.deepOrangeAccent),

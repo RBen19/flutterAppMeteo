@@ -79,7 +79,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     await Future.wait(weatherFutures);
     print("nombre de promesses ${weatherFutures.length}");
     if (cpt == 5) {
-      Get.to(() => SecondScreen(
+      Get.off(() => SecondScreen(
             listWeather: weatherListLoader,
           ));
 
