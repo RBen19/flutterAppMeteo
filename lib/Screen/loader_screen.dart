@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:app_meteo/Screen/error_screen.dart';
+import 'package:app_meteo/Screen/second_screen.dart';
 import 'package:app_meteo/utils/utils_fonctions.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import '../models/weather.dart';
 import '../services/api_service.dart';
 import 'CitiesScreen.dart';
+import 'error_screen.dart';
 
 class PrincipalScreen extends StatefulWidget {
   @override
@@ -19,6 +20,8 @@ class PrincipalScreen extends StatefulWidget {
 
 class _PrincipalScreenState extends State<PrincipalScreen> {
   List<String> randomTown = [];
+  int cpt = 0;
+  List<Future> weatherFutures = [];
   double _progress = 0.0;
   int _messageIndex = 0;
   late ApiService apiService;
@@ -43,32 +46,43 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     List<String> capitals = List.from(Utils.capitals);
     capitals.shuffle();
     randomTown = capitals.take(5).toList();
-    for (String town in randomTown) {
-      apiService
-          .getWeatherData(
-        'b3129c6a07b14c10a03232711251203',
-        '${town}',
-      )
-          .then((data) {
-        setState(() {
-          Utils.weatherList.add(data);
-          print("la taille de la liste est  ${Utils.weatherList.length}");
-          weather = data;
-          print(data.location.name);
-          print(data.current.feelslike_c);
-          print(data.current.temp_c);
-          _startLoading();
-          print("après que le loader ait fait son taf");
-          print("${data.current.wind_mph} vitesse du vent");
 
-          if (_progress == 1.0) {
-            //  _redirectToCitiesScreen();
-          }
-        });
-      }).catchError((e) {
-        print('Error: $e');
-        Get.off(() => ErrorScreen());
-      });
+    for (String town in randomTown) {
+      weatherFutures.add(
+        apiService
+            .getWeatherData(
+          'b3129c6a07b14c10a03232711251203',
+          town,
+        )
+            .then((data) {
+          setState(() {
+            Utils.weatherList.add(data);
+            cpt = cpt + 1; // Incrémente ton compteur
+            print("La valeur du compteur est ${cpt}");
+            print("La taille de la liste est ${Utils.weatherList.length}");
+            weather = data;
+            print(data.location.name);
+            print(data.current.feelslike_c);
+            print(data.current.temp_c);
+            _startLoading();
+            print("Après que le loader ait fait son taf");
+            print("${data.current.wind_mph} vitesse du vent");
+          });
+        }).catchError((e) {
+          print('Error: $e');
+          Get.off(() => ErrorScreen());
+        }),
+      );
+    }
+
+    await Future.wait(weatherFutures);
+    print("nombre de promesses ${weatherFutures.length}");
+    if (cpt == 5) {
+      Get.to(() => SecondScreen(
+            listWeather: Utils.weatherList,
+          ));
+
+      // gotoPrincipalScreen();
     }
   }
 
@@ -84,12 +98,20 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
         print('Fin du timer');
         // Redirection vers la page CitiesScreen
         // _redirectToCitiesScreen();
+        // gotoPrincipalScreen();
       }
     });
+    if (cpt == 5) {
+      // gotoPrincipalScreen();
+    }
   }
 
   void _redirectToCitiesScreen() {
     Get.off(() => CitiesScreen());
+  }
+
+  void gotoPrincipalScreen() {
+    Get.to(PrincipalScreen());
   }
 
   @override
