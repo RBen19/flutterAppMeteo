@@ -52,7 +52,7 @@ class DetailsScreen extends StatelessWidget {
                     "${weather.current.humidity} %"),
                 SizedBox(height: 20),
                 buildInfoCard(Icons.ac_unit, "Ressentie",
-                    "${weather.current.feelslike_c}"),
+                    "${weather.current.feelslike_c} °C"),
                 SizedBox(height: 40),
                 Center(
                   child: ElevatedButton.icon(
