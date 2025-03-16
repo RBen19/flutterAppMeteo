@@ -1,3 +1,7 @@
+Merciel Beni Sage BON ROSINARD
+
+Miral Charlize Manekos Amana
+
 # app_meteo
 
 A new Flutter project.

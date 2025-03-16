@@ -31,7 +31,7 @@ class SecondScreen extends StatelessWidget {
           children: [
             Utils.animation_builder("assets/animations/world.json", 200, 200),
             SizedBox(
-              height: 5,
+              height: 2.5,
             ),
             ElevatedButton(
               onPressed: () {
@@ -46,7 +46,7 @@ class SecondScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 10,
             ),
             ListView.builder(
               itemCount: listWeather.length,

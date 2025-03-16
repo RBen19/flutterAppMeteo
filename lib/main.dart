@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  Get.put(ThemeController());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  //Get.put(ThemeController());
+  final ThemeController themeControllerInject = Get.put(ThemeController());
   final ThemeController themeController = Get.find();
 
   MyApp({super.key});

@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapWidget extends StatelessWidget {
   final double lat;
   final double lon;
-  const MapWidget({super.key, required this.lat, required this.lon});
+  const MapWidget({
+    super.key,
+    required this.lat,
+    required this.lon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MapWidgetmethods(this.lat, this.lon),
+      appBar: AppBar(
+        title: Text(
+          "M2 Météo",
+          style: TextStyle(color: Colors.deepOrangeAccent),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 100,
+          ),
+          Container(
+              height: 500,
+              width: 500,
+              child: MapWidgetmethods(this.lat, this.lon)),
+        ],
+      ),
     );
   }
 }
