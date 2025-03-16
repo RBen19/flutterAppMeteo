@@ -20,16 +20,32 @@ class HomeScreen extends StatelessWidget {
               fontSize: 25,
               color: Colors.deepOrangeAccent),
         ),
-        leading: IconButton(
-            onPressed: () {
-              themeController.changeMode();
-            },
-            icon: Icon(Icons.brightness_6_sharp)),
+        leading: IconButton(onPressed: () {
+          themeController.changeMode();
+        }, icon: Obx(() {
+          return Icon(
+            themeController.isDarkMode.value
+                ? Icons.wb_sunny_outlined
+                : Icons.nightlight_round,
+            color: themeController.isDarkMode.value
+                ? Colors.yellow
+                : Colors.deepOrange,
+            size: 45,
+          );
+        })),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          animation_builder('assets/animations/animation2.json'),
+          SizedBox(
+            height: 20,
+          ),
+          Obx(() {
+            return themeController.isDarkMode.value
+                ? animation_builder('assets/animations/onthemoon.json')
+                : animation_builder('assets/animations/animation2.json');
+          }),
+          // animation_builder('assets/animations/animation2.json'),
           SizedBox(
             height: 80,
           ),
