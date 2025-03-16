@@ -8,10 +8,10 @@ class Api {
   static const String currentdata = '/current.json';
 }
 
-@RestApi(baseUrl:'http://api.weatherapi.com/v1')
+@RestApi(baseUrl: 'http://api.weatherapi.com/v1')
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
   @GET("/current.json")
-  Future<Weather> getWeatherData(
-      @Query('key') String apiKey, @Query('q') String location);
+  Future<Weather> getWeatherData(@Query('key') String apiKey,
+      @Query('q') String location, @Query('lang') String language);
 }

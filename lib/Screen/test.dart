@@ -36,10 +36,7 @@ class _TestWeatherState extends State<TestWeather> {
 
   Future<void> _getWeather() async {
     apiService
-        .getWeatherData(
-      'b3129c6a07b14c10a03232711251203',
-      'Dakar',
-    )
+        .getWeatherData('b3129c6a07b14c10a03232711251203', 'Dakar', 'fr')
         .then((data) {
       setState(() {
         weather = data;

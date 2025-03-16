@@ -1,4 +1,5 @@
 import 'package:app_meteo/Screen/details_screen.dart';
+import 'package:app_meteo/Screen/home_screen.dart';
 import 'package:app_meteo/Screen/loader_screen.dart';
 import 'package:app_meteo/models/weather.dart';
 import 'package:app_meteo/utils/utils_fonctions.dart';
@@ -17,11 +18,11 @@ class SecondScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Get.off(PrincipalScreen());
+              Get.off(HomeScreen());
             },
             icon: Icon(Icons.arrow_back)),
         title: Text(
-          "Météo",
+          "M2 Météo",
           style: TextStyle(color: Colors.deepOrangeAccent),
         ),
       ),

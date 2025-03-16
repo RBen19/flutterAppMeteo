@@ -15,7 +15,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Météo",
+          "M2 Météo",
           style: TextStyle(color: Colors.deepOrangeAccent),
         ),
       ),

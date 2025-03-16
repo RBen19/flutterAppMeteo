@@ -20,9 +20,17 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<Weather> getWeatherData(String apiKey, String location) async {
+  Future<Weather> getWeatherData(
+    String apiKey,
+    String location,
+    String language,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'key': apiKey, r'q': location};
+    final queryParameters = <String, dynamic>{
+      r'key': apiKey,
+      r'q': location,
+      r'lang': language,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<Weather>(

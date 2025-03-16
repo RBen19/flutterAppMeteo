@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:app_meteo/Screen/second_screen.dart';
+import 'package:app_meteo/Screen/weather_screen.dart';
 import 'package:app_meteo/utils/utils_fonctions.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -50,14 +50,11 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     for (String town in randomTown) {
       weatherFutures.add(
         apiService
-            .getWeatherData(
-          'b3129c6a07b14c10a03232711251203',
-          town,
-        )
+            .getWeatherData('b3129c6a07b14c10a03232711251203', town, 'fr')
             .then((data) {
           setState(() {
             weatherListLoader.add(data);
-            cpt = cpt + 1; // Incrémente ton compteur
+            cpt = cpt + 1;
             print("La valeur du compteur est ${cpt}");
             print("La taille de la liste est ${Utils.weatherList.length}");
             weather = data;
