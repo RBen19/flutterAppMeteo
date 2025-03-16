@@ -1,5 +1,7 @@
 import 'package:app_meteo/models/weather.dart';
+import 'package:app_meteo/widgets/map_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/utils_fonctions.dart';
 import '../widgets/card_details_villes.dart';
@@ -54,7 +56,10 @@ class DetailsScreen extends StatelessWidget {
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    print("Voir sur Maps");
+                    Get.to(() => MapWidget(
+                          lat: weather.location.lat!,
+                          lon: weather.location.lon!,
+                        ));
                   },
                   icon: Icon(Icons.map),
                   label: Text(
