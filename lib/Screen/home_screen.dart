@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../controller/theme_controller.dart';
 import '../widgets/animated_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeController themeController = Get.find();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -17,6 +20,11 @@ class HomeScreen extends StatelessWidget {
               fontSize: 25,
               color: Colors.deepOrangeAccent),
         ),
+        leading: IconButton(
+            onPressed: () {
+              themeController.changeMode();
+            },
+            icon: Icon(Icons.dark_mode)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

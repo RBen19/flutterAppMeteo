@@ -1,13 +1,16 @@
 import 'package:app_meteo/Screen/home_screen.dart';
+import 'package:app_meteo/controller/theme_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ThemeController themeController = Get.put(ThemeController());
+
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -34,6 +37,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      themeMode:
+          themeController.isDarkMode.value ? ThemeMode.light : ThemeMode.dark,
       home: HomeScreen(),
     );
   }
