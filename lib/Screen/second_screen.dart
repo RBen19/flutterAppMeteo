@@ -1,3 +1,4 @@
+import 'package:app_meteo/Screen/details_screen.dart';
 import 'package:app_meteo/Screen/loader_screen.dart';
 import 'package:app_meteo/models/weather.dart';
 import 'package:app_meteo/utils/utils_fonctions.dart';
@@ -50,11 +51,20 @@ class SecondScreen extends StatelessWidget {
               itemCount: listWeather.length,
               itemBuilder: (context, index) {
                 weather = listWeather[index];
-                return CardVillesWidget(
-                  nameTown: weather.location.name,
-                  country: weather.location.country,
-                  temp_c: weather.current.temp_c,
-                  wind: weather.current.wind_mph,
+                return GestureDetector(
+                  onTap: () {
+                    print("sur la liste j'ai fais un clique");
+                    Get.to(() => DetailsScreen(
+                          weather: listWeather[index],
+                        ));
+                    print(listWeather[index].location.name);
+                  },
+                  child: CardVillesWidget(
+                    nameTown: weather.location.name,
+                    country: weather.location.country,
+                    temp_c: weather.current.temp_c,
+                    wind: weather.current.wind_mph,
+                  ),
                 );
               },
               shrinkWrap: true,

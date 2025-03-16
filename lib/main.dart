@@ -2,8 +2,6 @@ import 'package:app_meteo/Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Screen/CitiesScreen.dart';
-
 void main() {
   runApp(const MyApp());
 }

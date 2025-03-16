@@ -10,7 +10,6 @@ import 'package:get/get.dart';
 
 import '../models/weather.dart';
 import '../services/api_service.dart';
-import 'CitiesScreen.dart';
 import 'error_screen.dart';
 
 class PrincipalScreen extends StatefulWidget {
@@ -105,10 +104,6 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     if (cpt == 5) {
       // gotoPrincipalScreen();
     }
-  }
-
-  void _redirectToCitiesScreen() {
-    Get.off(() => CitiesScreen());
   }
 
   void gotoPrincipalScreen() {

@@ -2,6 +2,8 @@ import 'package:app_meteo/models/weather.dart';
 import 'package:app_meteo/services/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class Test extends StatelessWidget {
   const Test({super.key});
@@ -28,7 +30,7 @@ class _TestWeatherState extends State<TestWeather> {
     // TODO: implement initState
     final dio = Dio(BaseOptions(contentType: "application/json"));
     apiService = ApiService(dio);
-    _getWeather();
+    // _getWeather();
     super.initState();
   }
 
@@ -51,20 +53,17 @@ class _TestWeatherState extends State<TestWeather> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Weather')),
-      body: weather == null
-          ? Center(child: CircularProgressIndicator())
-          : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Location: ${weather!.location.name}'),
-                  Text('Temperature: ${weather!.current.feelslike_c}°C'),
-                  Text('Humidity: ${weather!.current.humidity}%'),
-                ],
-              ),
-            ),
+    return FlutterMap(
+      options: MapOptions(
+          initialCenter: LatLng(1.2878, 103.8666),
+          initialZoom: 15.0,
+          interactionOptions:
+              InteractionOptions(flags: ~InteractiveFlag.doubleTapZoom)),
+      children: [openStreetMapTileLayer],
     );
   }
+
+  TileLayer get openStreetMapTileLayer => TileLayer(
+      urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      userAgentPackageName: 'dev.fleaflet.flutter_map.example');
 }
