@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               themeController.changeMode();
             },
-            icon: Icon(Icons.dark_mode)),
+            icon: Icon(Icons.brightness_6_sharp)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

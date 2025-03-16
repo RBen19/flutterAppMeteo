@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(ThemeController());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final ThemeController themeController = Get.put(ThemeController());
+  final ThemeController themeController = Get.find();
 
   MyApp({super.key});
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       themeMode:
-          themeController.isDarkMode.value ? ThemeMode.light : ThemeMode.dark,
+          themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       home: HomeScreen(),
     );
   }
